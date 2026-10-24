@@ -1,0 +1,179 @@
+name: Auto-Heal — Monitor Bureau Websites
+
+# Runs weekly and on every push to main.
+# Probes the three bureau freeze pages and diffs their HTML against known-good snapshots.
+# If a page has changed enough to potentially break our guidance, the build fails
+# and an issue is created so we can update the guide.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Run every Monday at 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:  # Allow manual triggering
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch and diff bureau pages
+        id: probe
+        run: |
+          set -euo pipefail
+
+          SNAPSHOT_DIR="snapshots"
+          mkdir -p "$SNAPSHOT_DIR"
+          CHANGES_FOUND=0
+
+          # Define bureaus to monitor: name, URL, snapshot filename, minimum content threshold (chars)
+          BUREAUS=(
+            "equifax|https://www.equifax.com/personal/credit-report-services/credit-freeze/|equifax.html|2000"
+            "experian|https://www.experian.com/freeze/center.html|experian.html|2000"
+            "transunion|https://www.transunion.com/credit-freeze|transunion.html|1000"
+          )
+
+          for bureau_config in "${BUREAUS[@]}"; do
+            IFS='|' read -r name url snapshot min_size <<< "$bureau_config"
+            echo "=== Checking $name ($url) ==="
+
+            # Fetch the page with realistic headers
+            html=$(curl -sS -L --max-time 30 \
+              -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+              -H "Accept: text/html,application/xhtml+xml" \
+              -H "Accept-Language: en-US,en;q=0.9" \
+              "$url" 2>/dev/null || echo "")
+
+            if [ -z "$html" ]; then
+              echo "::error::$name: Failed to fetch page (empty response)"
+              CHANGES_FOUND=1
+              continue
+            fi
+
+            current_size=${#html}
+            echo "  Current size: $current_size characters"
+
+            # Check minimum size threshold
+            if [ "$current_size" -lt "$min_size" ]; then
+              echo "::warning::$name: Page is smaller than expected ($current_size < $min_size). May need investigation."
+              CHANGES_FOUND=1
+            fi
+
+            # Compare with stored snapshot if one exists
+            snapshot_file="$SNAPSHOT_DIR/$snapshot"
+            if [ -f "$snapshot_file" ]; then
+              old_size=$(wc -c < "$snapshot_file")
+              size_diff=$((current_size - old_size))
+              abs_diff=${size_diff#-}
+
+              echo "  Previous size: $old_size characters"
+              echo "  Size difference: $size_diff characters"
+
+              # If size changed by more than 15%, flag it
+              threshold=$((old_size * 15 / 100))
+              if [ "$abs_diff" -gt "$threshold" ] && [ "$threshold" -gt 100 ]; then
+                echo "::error::$name: Significant page change detected (${abs_diff} chars, threshold: ${threshold})"
+                CHANGES_FOUND=1
+
+                # Generate diff summary for the issue
+                echo "--- Size Difference ---" >> "$snapshot_file.diff"
+                echo "Previous: $old_size chars" >> "$snapshot_file.diff"
+                echo "Current:  $current_size chars" >> "$snapshot_file.diff"
+                echo "Change:   $size_diff chars ($(($ size_diff * 100 / old_size ))%)" >> "$snapshot_file.diff"
+
+                # Extract key text content for comparison (strip tags, compare headings)
+                echo "" >> "$snapshot_file.diff"
+                echo "--- Key Content Changes ---" >> "$snapshot_file.diff"
+                grep -oiP '<title>[^<]+</title>' <<< "$html" >> "$snapshot_file.diff" 2>/dev/null || true
+                grep -oiP '<h[12][^>]*>[^<]+</h[12]>' <<< "$html" | head -20 >> "$snapshot_file.diff" 2>/dev/null || true
+              else
+                echo "  No significant change (within $threshold char threshold)"
+              fi
+            else
+              echo "  No previous snapshot — storing first snapshot"
+              CHANGES_FOUND=1
+            fi
+
+            # Save current page as the new snapshot
+            echo "$html" > "$snapshot_file"
+            echo "  Snapshot saved: $snapshot_file"
+
+            # Clean up diff file if it exists
+            rm -f "$snapshot_file.diff"
+          done
+
+          # Export result
+          echo "changes_found=$CHANGES_FOUND" >> "$GITHUB_OUTPUT"
+
+          # Save snapshots to artifacts for inspection
+          if [ -d "$SNAPSHOT_DIR" ]; then
+            echo "## Bureau Snapshots" >> artifact.md
+            for f in "$SNAPSHOT_DIR"/*.html; do
+              echo "" >> artifact.md
+              echo "### $(basename "$f" .html)" >> artifact.md
+              echo "\`\`\`" >> artifact.md
+              head -50 "$f" >> artifact.md
+              echo "..." >> artifact.md
+              echo "\`\`\`" >> artifact.md
+            done
+          fi
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bureau-snapshots
+          path: snapshots/
+          retention-days: 30
+
+      - name: Create issue on significant change
+        if: steps.probe.outputs.changes_found == '1'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const bureaus = ['Equifax', 'Experian', 'TransUnion'];
+            const title = 'Auto-Heal: Bureau freeze page changes detected';
+            const body = `## Bureau website changes detected
+
+            A scheduled or deployment-time check found that one or more bureau freeze pages have changed significantly since the last snapshot.
+
+            ### What this means
+            The guidance in our app may need updating if the bureau's freeze flow, buttons, or terminology has changed.
+
+            ### Bureaus flagged
+            ${bureaus.map(b => `- **${b}**`).join('\n')}
+
+            ### Next steps
+            1. Download the "bureau-snapshots" artifact from this workflow run
+            2. Compare the current HTML against the existing `snapshots/` files
+            3. Update the guide if the freeze flow has changed
+            4. Update the step-by-step instructions if needed
+            5. Update bureau phone numbers if they've changed
+
+            ### Bureau freeze URLs (always verify these still work)
+            - Equifax: https://www.equifax.com/personal/credit-report-services/credit-freeze/
+            - Experian: https://www.experian.com/freeze/center.html
+            - TransUnion: https://www.transunion.com/credit-freeze
+
+            ---
+            _This issue was automatically created by the Auto-Heal workflow._`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['auto-heal', 'bureau-changes'],
+            });
+
+            console.log(`Issue created: ${title}`);

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Freeze Guide — Freeze All Three Bureaus for Free</title>
+  <meta name="description" content="Step-by-step guide to freezing your credit at Equifax, Experian, and TransUnion. Free by federal law. No accounts, no tracking, no paid upsells.">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#2D6A4F">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Freeze Guide">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <h1 class="app-title">
+          <svg class="app-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="4" y="12" width="24" height="16" rx="2" fill="#2D6A4F"/>
+            <rect x="8" y="8" width="16" height="20" rx="2" fill="#40916C"/>
+            <rect x="12" y="12" width="8" height="8" rx="1" fill="#52B788"/>
+            <path d="M14 16l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Credit Freeze Guide
+        </h1>
+        <p class="app-subtitle">Free by federal law. No accounts needed. Your data stays on your device.</p>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav" aria-label="Main navigation">
+      <div class="container">
+        <button class="nav-tab active" data-tab="guide" aria-selected="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M3 2h11l3 3v13a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 2v4h6V2" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          Freeze Guide
+        </button>
+        <button class="nav-tab" data-tab="pins" aria-selected="false">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="7" cy="10" r="1.5" fill="currentColor"/>
+            <circle cx="13" cy="10" r="1.5" fill="currentColor"/>
+          </svg>
+          My PINs
+        </button>
+        <button class="nav-tab" data-tab="dashboard" aria-selected="false">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M3 10l4 4L17 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Status
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+
+      <!-- GUIDE TAB -->
+      <section id="tab-guide" class="tab-content active">
+        <div class="alert-box">
+          <strong>Good to know:</strong> By federal law (the SECURE Act), credit freezes are 100% free. You should never have to pay to freeze or unfreeze your credit.
+        </div>
+
+        <p class="intro-text">
+          A credit freeze locks your credit file so no one can open new accounts in your name. 
+          You need to freeze your credit at <strong>all three bureaus</strong>. Each one gives you a PIN — 
+          write it down or save it in the "My PINs" tab.
+        </p>
+
+        <h2>Freeze Your Credit</h2>
+        <p>Click the button below for the bureau you want to freeze. Follow the steps on their site.</p>
+
+        <!-- What to Have Ready -->
+        <div class="info-box">
+          <h3>What to have ready before you start</h3>
+          <p>Each bureau will ask you to create an account and verify your identity. Have this information ready:</p>
+          <ul>
+            <li><strong>Full legal name</strong> (as it appears on your official documents)</li>
+            <li><strong>Social Security number</strong></li>
+            <li><strong>Current mailing address</strong></li>
+            <li><strong>Previous address</strong> (if you moved within the last 2 years)</li>
+            <li><strong>Some credit history details</strong> — a few bureaus ask about existing accounts or streets you've lived on</li>
+          </ul>
+          <p class="small-text">Having this ready makes the process take just a few minutes per bureau.</p>
+        </div>
+
+        <!-- Bureau Cards -->
+        <div class="bureau-cards">
+          <!-- Equifax -->
+          <article class="bureau-card" data-bureau="equifax">
+            <div class="bureau-card-header">
+              <h3>Equifax</h3>
+              <span class="bureau-status status-pending" data-status="equifax">Pending</span>
+            </div>
+            <p class="bureau-phone">Phone: <a href="tel:1-800-349-9960">1-800-349-9960</a></p>
+            <div class="bureau-actions">
+              <a href="https://www.equifax.com/personal/credit-report-services/credit-freeze/" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Freeze Online
+              </a>
+              <button class="btn btn-secondary mark-complete" data-bureau="equifax">
+                Mark as Done
+              </button>
+            </div>
+            <details class="bureau-details">
+              <summary>Step-by-step instructions</summary>
+              <ol class="steps">
+                <li>Go to Equifax's Security Freeze page</li>
+                <li>Click "Place a Freeze"</li>
+                <li>Create an account or sign in</li>
+                <li>Verify your identity (you'll need personal info)</li>
+                <li>Complete the freeze — it takes only a minute online</li>
+                <li><strong>Save your PIN</strong> — you'll need it to unfreeze later</li>
+              </ol>
+            </details>
+          </article>
+
+          <!-- Experian -->
+          <article class="bureau-card" data-bureau="experian">
+            <div class="bureau-card-header">
+              <h3>Experian</h3>
+              <span class="bureau-status status-pending" data-status="experian">Pending</span>
+            </div>
+            <p class="bureau-phone">Phone: <a href="tel:1-888-397-8979">1-888-397-8979</a></p>
+            <div class="bureau-actions">
+              <a href="https://www.experian.com/freeze/center.html" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Freeze Online
+              </a>
+              <button class="btn btn-secondary mark-complete" data-bureau="experian">
+                Mark as Done
+              </button>
+            </div>
+            <details class="bureau-details">
+              <summary>Step-by-step instructions</summary>
+              <ol class="steps">
+                <li>Go to Experian's Freeze Center</li>
+                <li>Click "Freeze My Credit"</li>
+                <li>Create an account or sign in</li>
+                <li>Answer identity verification questions</li>
+                <li>Complete the freeze</li>
+                <li><strong>Save your PIN</strong> — you'll need it to unfreeze later</li>
+              </ol>
+            </details>
+          </article>
+
+          <!-- TransUnion -->
+          <article class="bureau-card" data-bureau="transunion">
+            <div class="bureau-card-header">
+              <h3>TransUnion</h3>
+              <span class="bureau-status status-pending" data-status="transunion">Pending</span>
+            </div>
+            <p class="bureau-phone">Phone: <a href="tel:1-800-916-8800">1-800-916-8800</a></p>
+            <div class="bureau-actions">
+              <a href="https://www.transunion.com/credit-freeze" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-primary">
+                Freeze Online
+              </a>
+              <button class="btn btn-secondary mark-complete" data-bureau="transunion">
+                Mark as Done
+              </button>
+            </div>
+            <details class="bureau-details">
+              <summary>Step-by-step instructions</summary>
+              <ol class="steps">
+                <li>Go to TransUnion's Credit Freeze page</li>
+                <li>Click "Freeze My Credit"</li>
+                <li>Create an account or sign in</li>
+                <li>Verify your identity with personal information</li>
+                <li>Complete the freeze — it takes effect right away online</li>
+                <li><strong>Save your PIN</strong> — you'll need it to unfreeze later</li>
+              </ol>
+            </details>
+          </article>
+        </div>
+
+        <!-- Important Warnings -->
+        <div class="warning-box">
+          <strong>Watch out:</strong> The bureau websites may try to sell you extra products. 
+          Look for buttons that say "free" or scroll past any paid offers. 
+          A credit freeze is free — you do not need a credit monitoring subscription.
+        </div>
+
+        <!-- What to expect -->
+        <div class="info-box">
+          <h3>What happens after you freeze?</h3>
+          <ul>
+            <li><strong>New accounts:</strong> No one can open new credit in your name while the freeze is active.</li>
+            <li><strong>Existing accounts:</strong> Your current credit cards, loans, and accounts are unaffected.</li>
+            <li><strong>Temporarily unlock:</strong> If you need to apply for credit, you can temporarily lift the freeze.</li>
+            <li><strong>Cost:</strong> Always free — by federal law.</li>
+          </ul>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          <p class="intro-text">Common questions about credit freezes, based on information from each bureau.</p>
+
+          <details class="faq-item">
+            <summary>How long does it take to place a freeze?</summary>
+            <p><strong>Online:</strong> Usually just a few minutes — the freeze takes effect immediately. <strong>By phone:</strong> Up to 1 hour. <strong>By mail:</strong> Up to 3 business days after they receive your request.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does a credit freeze affect my credit score?</summary>
+            <p>No. A credit freeze has <strong>zero impact</strong> on your credit score. You can freeze and unfreeze as often as you like.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I still use my existing credit cards and loans?</summary>
+            <p>Yes. A freeze only stops <strong>new accounts</strong> from being opened. Your existing credit cards, mortgages, auto loans, and other accounts continue to work normally. The companies can still take payments and report to bureaus.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do I temporarily lift a freeze?</summary>
+            <p>Sign in to the bureau's website (use the buttons above), look for "Lift a freeze" or "Temporary freeze removal," and enter your PIN. You can choose to lift it for a specific time period (like 1 hour or 1 day) or for a specific company. Most lifts take effect instantly online.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is a credit freeze the same as a fraud alert?</summary>
+            <p>No. A <strong>fraud alert</strong> lasts 1 year (7 years for verified identity theft) and requires companies to verify your identity before granting credit. A <strong>credit freeze</strong> stays in place until you remove it and is stronger — it blocks access to your credit file entirely. A freeze is the better protection.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How much does it cost to freeze or unfreeze my credit?</summary>
+            <p><strong>Nothing.</strong> By federal law (the SECURE Act), freezing and unfreezing your credit is always free. If a bureau asks you to pay, something is wrong — ask to speak to a supervisor or contact the Consumer Financial Protection Bureau.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What if I lose my PIN?</summary>
+            <p>You can retrieve it by logging into your account on the bureau's website. Each bureau lets you view or reset your PIN after you verify your identity. That's why it's helpful to save it in this app or write it down.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do I need to freeze all three bureaus?</summary>
+            <p>Yes. Each bureau maintains its own separate credit file, and not all lenders report to all three bureaus. To be fully protected, you need to freeze at <strong>all three</strong>: Equifax, Experian, and TransUnion.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can a freeze stop someone from getting a job or apartment?</summary>
+            <p>No. A freeze only affects <strong>new credit applications</strong>. Background checks for employment, renting an apartment (in most cases), and other non-credit inquiries are not blocked. If someone does need to check your credit, you can temporarily lift the freeze for them.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do I know the freeze actually went through?</summary>
+            <p>Each bureau sends a confirmation (usually by email or on-screen) with your PIN and a confirmation number after you freeze. Save that confirmation. You can also call the bureau to verify the freeze is active.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- PINS TAB -->
+      <section id="tab-pins" class="tab-content">
+        <h2>My PINs</h2>
+        <p class="intro-text">Each credit bureau gives you a personal PIN when you freeze your credit. Keep these somewhere safe — you'll need them to unfreeze later.</p>
+
+        <div class="pin-cards">
+          <article class="pin-card" data-bureau="equifax">
+            <div class="pin-card-header">
+              <h3>Equifax PIN</h3>
+              <span class="pin-status" data-pin-status="equifax">Not saved</span>
+            </div>
+            <div class="pin-display" id="pin-equifax">
+              <span class="pin-masked">••••••••</span>
+              <button class="pin-toggle" data-pin="equifax" aria-label="Show Equifax PIN">Show</button>
+              <button class="pin-copy" data-pin="equifax" aria-label="Copy Equifax PIN">Copy</button>
+            </div>
+            <div class="pin-input-group">
+              <label for="pin-input-equifax">Save your PIN:</label>
+              <input type="password" 
+                     id="pin-input-equifax" 
+                     class="pin-input" 
+                     placeholder="Enter your Equifax PIN"
+                     maxlength="20"
+                     autocomplete="new-password"
+                     spellcheck="false">
+              <button class="btn btn-primary btn-save-pin" data-bureau="equifax">Save PIN</button>
+              <button class="btn btn-sm btn-outline pin-delete" data-bureau="equifax" hidden>Delete</button>
+              <p class="small-text">Tip: You can also paste your PIN from a password manager or write it down on paper.</p>
+            </div>
+          </article>
+
+          <article class="pin-card" data-bureau="experian">
+            <div class="pin-card-header">
+              <h3>Experian PIN</h3>
+              <span class="pin-status" data-pin-status="experian">Not saved</span>
+            </div>
+            <div class="pin-display" id="pin-experian">
+              <span class="pin-masked">••••••••</span>
+              <button class="pin-toggle" data-pin="experian" aria-label="Show Experian PIN">Show</button>
+              <button class="pin-copy" data-pin="experian" aria-label="Copy Experian PIN">Copy</button>
+            </div>
+            <div class="pin-input-group">
+              <label for="pin-input-experian">Save your PIN:</label>
+              <input type="password" 
+                     id="pin-input-experian" 
+                     class="pin-input" 
+                     placeholder="Enter your Experian PIN"
+                     maxlength="20"
+                     autocomplete="new-password"
+                     spellcheck="false">
+              <button class="btn btn-primary btn-save-pin" data-bureau="experian">Save PIN</button>
+              <button class="btn btn-sm btn-outline pin-delete" data-bureau="experian" hidden>Delete</button>
+              <p class="small-text">Tip: You can also paste your PIN from a password manager or write it down on paper.</p>
+            </div>
+          </article>
+
+          <article class="pin-card" data-bureau="transunion">
+            <div class="pin-card-header">
+              <h3>TransUnion PIN</h3>
+              <span class="pin-status" data-pin-status="transunion">Not saved</span>
+            </div>
+            <div class="pin-display" id="pin-transunion">
+              <span class="pin-masked">••••••••</span>
+              <button class="pin-toggle" data-pin="transunion" aria-label="Show TransUnion PIN">Show</button>
+              <button class="pin-copy" data-pin="transunion" aria-label="Copy TransUnion PIN">Copy</button>
+            </div>
+            <div class="pin-input-group">
+              <label for="pin-input-transunion">Save your PIN:</label>
+              <input type="password" 
+                     id="pin-input-transunion" 
+                     class="pin-input" 
+                     placeholder="Enter your TransUnion PIN"
+                     maxlength="20"
+                     autocomplete="new-password"
+                     spellcheck="false">
+              <button class="btn btn-primary btn-save-pin" data-bureau="transunion">Save PIN</button>
+              <button class="btn btn-sm btn-outline pin-delete" data-bureau="transunion" hidden>Delete</button>
+              <p class="small-text">Tip: You can also paste your PIN from a password manager or write it down on paper.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="warning-box">
+          <strong>Security note:</strong> Your PINs are stored on this device only. They are encrypted and never sent anywhere. 
+          If you clear your browser data, you may lose your saved PINs.
+        </div>
+      </section>
+
+      <!-- DASHBOARD TAB -->
+      <section id="tab-dashboard" class="tab-content">
+        <h2>Your Freeze Status</h2>
+        <p class="intro-text">Track which bureaus you've completed and manage your saved PINs all in one place.</p>
+
+        <div class="status-overview">
+          <div class="progress-ring-container">
+            <svg class="progress-ring" width="140" height="140" viewBox="0 0 140 140">
+              <circle class="progress-ring-bg" cx="70" cy="70" r="58" fill="none" stroke="#E8F5E9" stroke-width="12"/>
+              <circle class="progress-ring-fill" cx="70" cy="70" r="58" fill="none" stroke="#2D6A4F" stroke-width="12"
+                      stroke-dasharray="364.42" stroke-dashoffset="364.42" stroke-linecap="round" transform="rotate(-90 70 70)"/>
+            </svg>
+            <span class="progress-text" id="progress-text">0 of 3</span>
+          </div>
+          <p class="progress-label" id="progress-label">Start by freezing your credit at each bureau</p>
+        </div>
+
+        <div class="status-list">
+          <div class="status-item" data-bureau="equifax">
+            <div class="status-check">
+              <svg class="status-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path class="status-check-path" d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30" stroke-dashoffset="30"/>
+              </svg>
+            </div>
+            <div class="status-info">
+              <h3>Equifax</h3>
+              <p class="status-detail" data-status-detail="equifax">Not yet frozen</p>
+              <p class="status-pin" data-status-pin="equifax" hidden>No PIN saved</p>
+            </div>
+            <div class="status-actions">
+              <a href="https://www.equifax.com/personal/credit-report-services/credit-freeze/" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-sm">
+                Go to Equifax
+              </a>
+              <button class="btn btn-sm mark-complete" data-bureau="equifax">
+                Mark Complete
+              </button>
+              <button class="btn btn-sm btn-outline mark-pending" data-bureau="equifax" hidden>
+                Mark Pending
+              </button>
+            </div>
+          </div>
+
+          <div class="status-item" data-bureau="experian">
+            <div class="status-check">
+              <svg class="status-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path class="status-check-path" d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30" stroke-dashoffset="30"/>
+              </svg>
+            </div>
+            <div class="status-info">
+              <h3>Experian</h3>
+              <p class="status-detail" data-status-detail="experian">Not yet frozen</p>
+              <p class="status-pin" data-status-pin="experian" hidden>No PIN saved</p>
+            </div>
+            <div class="status-actions">
+              <a href="https://www.experian.com/freeze/center.html" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-sm">
+                Go to Experian
+              </a>
+              <button class="btn btn-sm mark-complete" data-bureau="experian">
+                Mark Complete
+              </button>
+              <button class="btn btn-sm btn-outline mark-pending" data-bureau="experian" hidden>
+                Mark Pending
+              </button>
+            </div>
+          </div>
+
+          <div class="status-item" data-bureau="transunion">
+            <div class="status-check">
+              <svg class="status-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path class="status-check-path" d="M7 12l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30" stroke-dashoffset="30"/>
+              </svg>
+            </div>
+            <div class="status-info">
+              <h3>TransUnion</h3>
+              <p class="status-detail" data-status-detail="transunion">Not yet frozen</p>
+              <p class="status-pin" data-status-pin="transunion" hidden>No PIN saved</p>
+            </div>
+            <div class="status-actions">
+              <a href="https://www.transunion.com/credit-freeze" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="btn btn-sm">
+                Go to TransUnion
+              </a>
+              <button class="btn btn-sm mark-complete" data-bureau="transunion">
+                Mark Complete
+              </button>
+              <button class="btn btn-sm btn-outline mark-pending" data-bureau="transunion" hidden>
+                Mark Pending
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="complete-message" id="complete-message" hidden>
+          <div class="success-box">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="22" fill="#D8F3A8"/>
+              <path d="M14 24l7 7 13-13" stroke="#2D6A4F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>All Done!</h3>
+            <p>You've frozen your credit at all three bureaus. Your credit is now locked and protected.</p>
+            <p class="small-text">To temporarily unlock your credit (for example, to apply for a loan), 
+               visit each bureau's website using the buttons above and follow their temporary lift instructions.</p>
+          </div>
+        </div>
+
+        <!-- Unfreeze section -->
+        <div class="info-box">
+          <h3>How to unfreeze temporarily</h3>
+          <p>If you need to apply for credit (a loan, apartment, etc.), you can temporarily lift your freeze:</p>
+          <ol>
+            <li>Sign in to each bureau's website using the buttons above</li>
+            <li>Look for "Lift a freeze" or "Temporary freeze removal"</li>
+            <li>You'll need your PIN to do this</li>
+            <li>Choose how long you need the freeze lifted (you can set a specific date range)</li>
+          </ol>
+          <p class="small-text">Some people offer a "permanent" freeze removal option. 
+             This is permanent — to freeze again, you'd need to contact each bureau. 
+             Unless you never want another freeze, choose the temporary option instead.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>This tool is not affiliated with Equifax, Experian, or TransUnion. 
+           Credit freezes are free by federal law (the SECURE Act). 
+           Your data never leaves your device.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-message" id="toast-message"></span>
+  </div>
+
+  <script src="/js/encryption.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
