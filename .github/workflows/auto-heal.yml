@@ -88,7 +88,7 @@ jobs:
                 echo "--- Size Difference ---" >> "$snapshot_file.diff"
                 echo "Previous: $old_size chars" >> "$snapshot_file.diff"
                 echo "Current:  $current_size chars" >> "$snapshot_file.diff"
-                echo "Change:   $size_diff chars ($(($ size_diff * 100 / old_size ))%)" >> "$snapshot_file.diff"
+                echo "Change:   $size_diff chars ($(($size_diff * 100 / old_size ))%)" >> "$snapshot_file.diff"
 
                 # Extract key text content for comparison (strip tags, compare headings)
                 echo "" >> "$snapshot_file.diff"
