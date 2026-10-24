@@ -1,12 +1,12 @@
 const CACHE_NAME = 'credit-freeze-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/css/styles.css',
-  '/js/app.js',
-  '/js/encryption.js',
-  '/favicon.svg'
+  './',
+  'index.html',
+  'manifest.json',
+  'css/styles.css',
+  'js/app.js',
+  'js/encryption.js',
+  'favicon.svg'
 ];
 
 // Install — cache all static assets
