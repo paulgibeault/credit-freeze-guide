@@ -143,6 +143,7 @@ jobs:
           script: |
             const bureaus = ['Equifax', 'Experian', 'TransUnion'];
             const title = 'Auto-Heal: Bureau freeze page changes detected';
+            const snapshotRef = String.fromCodePoint(96) + 'snapshots/' + String.fromCodePoint(96);
             const body = `## Bureau website changes detected
 
             A scheduled or deployment-time check found that one or more bureau freeze pages have changed significantly since the last snapshot.
@@ -151,11 +152,11 @@ jobs:
             The guidance in our app may need updating if the bureau's freeze flow, buttons, or terminology has changed.
 
             ### Bureaus flagged
-            ${bureaus.map(b => `- **${b}**`).join('\n')}
+            ${bureaus.map(b => '- **' + b + '**').join('\n')}
 
             ### Next steps
             1. Download the "bureau-snapshots" artifact from this workflow run
-            2. Compare the current HTML against the existing `snapshots/` files
+            2. Compare the current HTML against the existing ${snapshotRef} files
             3. Update the guide if the freeze flow has changed
             4. Update the step-by-step instructions if needed
             5. Update bureau phone numbers if they've changed
@@ -176,4 +177,4 @@ jobs:
               labels: ['auto-heal', 'bureau-changes'],
             });
 
-            console.log(`Issue created: ${title}`);
+            console.log('Issue created: ' + title);
